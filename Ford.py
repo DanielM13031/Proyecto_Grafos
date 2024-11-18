@@ -11,21 +11,27 @@ def grafo_residual(G):
     return Gr
 
 
-def Ford_Fulkerson(G,s,t):
-
-    Gf = grafo_residual(G)
-    flujo_t  =  0
+def Ford_Fulkerson(G, s, t):
+    Gf = grafo_residual(G)  
+    flujo_t = 0
 
     while True:
-        camino = BFS(Gf,s,t)
+        camino = BFS(Gf, s, t)  
 
-        if not camino:
+        if not camino:  
             break
 
-        capacidad_residual = min(Gf[u][v]['capacity'] for u, v in camino)
-        flujo_t += capacidad_residual
+        capacidad_residual = float('Inf')
+        for i in range(len(camino) - 1):  
+            u, v = camino[i], camino[i + 1]
+            capacidad_residual = min(capacidad_residual, Gf[u][v]['capacity'])
 
-        for u, v in camino:
-            Gf[u][v]['capacity'] -= capacidad_residual
-            Gf[v][u]['capacity'] += capacidad_residual
+        flujo_t += capacidad_residual 
+
+
+        for i in range(len(camino) - 1):
+            u, v = camino[i], camino[i + 1]
+            Gf[u][v]['capacity'] -= capacidad_residual  
+            Gf[v][u]['capacity'] += capacidad_residual 
+
     return flujo_t

@@ -24,7 +24,7 @@ G.add_edge('D','L', capacity = 500)
 
 #Flujos maximos
 flow_value = Ford_Fulkerson(G, 'A', 'D')
-print("Flujo máximo:", flow_value)
+print("Flujo maximo:", flow_value)
 
 
 
