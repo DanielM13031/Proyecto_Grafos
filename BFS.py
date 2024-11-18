@@ -1,16 +1,23 @@
 import networkx as nx
 
-def BFS (graf, start, end):
-    T = []
-    L = [start]
-    while len(L) != 0:
+def BFS(graph, start, end):
+    V_t = {}
+    L = [start]  
+
+    while L:
         M = L.pop(0)
-        T.append(M)
 
         if M == end:
-            return T
-        
-        for j in graf.neighbors(M):
-            if j not in L and j not in T:
+            T = []
+            while M:
+                T.append(M)
+                M = V_t.get(M, None)
+            return list(reversed(T))
+
+        for j in graph.neighbors(M):
+                V_t[j] = M  
                 L.append(j)
-    return T
+
+
+
+
