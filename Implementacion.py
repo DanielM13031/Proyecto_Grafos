@@ -21,10 +21,11 @@ G.add_edge('C','G', capacity = 250)
 G.add_edge('E','K', capacity = 400)
 G.add_edge('D','L', capacity = 500)
 
-
 #Flujos maximos
 flow_value, flow_dict = nx.maximum_flow(G, 'A', 'D')
 print("Flujo máximo:", flow_value)
 print("Flujos por nodo:", flow_dict)
+
+
 
 
