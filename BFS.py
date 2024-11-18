@@ -10,9 +10,7 @@ def BFS (graf, start, end):
         if M == end:
             return T
         
-        for j in G.neighbors(M):
+        for j in graf.neighbors(M):
             if j not in L and j not in T:
                 L.append(j)
     return T
-
-print(BFS(G, 'A', 'L'))

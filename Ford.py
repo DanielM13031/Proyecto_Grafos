@@ -1,4 +1,5 @@
 import networkx as nx
+from BFS import BFS
 
 def grafo_residual(G):
     Gr =  nx. DiGraph()
@@ -16,7 +17,7 @@ def Ford_Fulkerson(G,s,t):
     flujo_t  =  0
 
     while True:
-        camino = DFS(Gf,s,t)
+        camino = BFS(Gf,s,t)
 
         if not camino:
             break

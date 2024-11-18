@@ -1,4 +1,5 @@
 import networkx as nx
+from Ford import Ford_Fulkerson
 
 #Definicion del grafo
 G =  nx.DiGraph()
@@ -22,9 +23,9 @@ G.add_edge('E','K', capacity = 400)
 G.add_edge('D','L', capacity = 500)
 
 #Flujos maximos
-flow_value, flow_dict = nx.maximum_flow(G, 'A', 'D')
+flow_value = Ford_Fulkerson(G, 'A', 'D')
 print("Flujo máximo:", flow_value)
-print("Flujos por nodo:", flow_dict)
+
 
 
 
