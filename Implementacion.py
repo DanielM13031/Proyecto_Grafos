@@ -4,8 +4,9 @@ from coloracion import coloreo_voraz
 from Latencia import Latencia_dinamica, Asignar_flujo, Calcular_rutas
 import matplotlib.pyplot as plt
 
-G = nx.DiGraph()
 
+#Grafo de la red
+G = nx.DiGraph()
 G.add_edge('A', 'B', capacity=500, latency_base=1)
 G.add_edge('B', 'C', capacity=400, latency_base=1)
 G.add_edge('C', 'D', capacity=600, latency_base=1)
@@ -24,6 +25,7 @@ G.add_edge('C', 'G', capacity=250, latency_base=1)
 G.add_edge('E', 'K', capacity=400, latency_base=1)
 G.add_edge('D', 'L', capacity=500, latency_base=1)
 
+#Grafo no dirigido asociado al dirigido
 G_ND = nx.Graph()
 G_ND.add_edge('A','B')
 G_ND.add_edge('B','C')
