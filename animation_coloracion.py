@@ -129,7 +129,7 @@ class Grafo_col(Scene):
 
         conclusion_text = MathTex(
             r"\text{Dadas estas cotas y por el algoritmo de coloración voraz, }",
-            r"\text{se demuestra que } \chi(G) = 4."
+            r"\text{se demuestra que } \chi(G) = 3."
         )
         conclusion_text.scale(0.7)
         self.play(FadeOut(formula3))
