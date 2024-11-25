@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/3977891868_2914800367_223132457.mp4'
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/2852726489_3890345977_4018481046.mp4'
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/2852726489_610169097_4045850765.mp4'
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/2852726489_3286502148_2339463139.mp4'
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/2852726489_1310813858_2976530429.mp4'
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/2852726489_160039936_3819301894.mp4'
+file 'file:C:/Users/danie/Desktop/Proyecto_Grafos/media/videos/animation_coloracion/1080p60/partial_movie_files/Grafo/2852726489_1141282389_823247463.mp4'

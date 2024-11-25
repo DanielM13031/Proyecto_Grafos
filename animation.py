@@ -113,6 +113,7 @@ class Grafo(Scene):
 
         self.play(*[Create(digraph.edges[e]) for e in digraph.edges])
 
+        label_texts = []
         for edge, label in edge_labels.items():
             if edge in label_positions:
                 label_position = label_positions[edge]
@@ -121,7 +122,10 @@ class Grafo(Scene):
                 pos_start = positions[start]
                 pos_end = positions[end]
                 label_position = [(s + e) / 2 for s, e in zip(pos_start, pos_end)]
-                label_position[1] += 0.1 
+                label_position[1] += 0.1
+                label_text = Text(label, font_size=10).move_to(label_position)
+                label_texts.append(label_text)
+
 
             label_text = Text(label, font_size=10).move_to(label_position)
 
@@ -130,6 +134,8 @@ class Grafo(Scene):
 
             self.play(FadeIn(label_text))
             self.add(label_text)
+
+
         self.wait(1)
         self.wait(2)
 
