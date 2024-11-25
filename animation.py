@@ -2,6 +2,11 @@ from manim import *
 
 class Grafo(Scene):
     def construct(self):
+        Texto1 = Text("Aplcacion de grafos a Redes")
+        self.play(Write(Texto1))
+        self.wait(1)
+        letras = Texto1.submobjects[:12]
+        otras = Texto1.submobjects[12:]
 
         separacion = 1.5
         positions = {
@@ -18,8 +23,13 @@ class Grafo(Scene):
             "K": [4 * separacion, -1, 0],  # Nivel 3
             "L": [-1 * separacion, -3, 0],  # Nivel 4
         }
+        nodos = []
+        for idx, (letra, pos) in enumerate(zip(letras, positions.values())):
+            nodo = Circle(radius=0.25, color=WHITE).move_to(pos)
+            nodos.append(nodo)
 
-
+        self.play (*[FadeOut(letras) for letras in otras])
+        self.play(*[Transform(letra, nodo) for letra, nodo in zip(letras, nodos)])
         edges = [
             ("A", "B"), ("B", "C"), ("C", "D"), ("D", "E"), ("E", "J"),
             ("A", "F"), ("F", "G"), ("G", "H"), ("H", "I"), ("I", "J"),
@@ -111,13 +121,57 @@ class Grafo(Scene):
                 pos_start = positions[start]
                 pos_end = positions[end]
                 label_position = [(s + e) / 2 for s, e in zip(pos_start, pos_end)]
-                label_position[1] += 0.1
+                label_position[1] += 0.1 
 
             label_text = Text(label, font_size=10).move_to(label_position)
 
             if edge in label_rotations:
                 label_text.rotate(label_rotations[edge] * DEGREES)
 
+            self.play(FadeIn(label_text))
             self.add(label_text)
-
+        self.wait(1)
         self.wait(2)
+
+
+
+        camino1 = [("A", "B"), ("B", "C"), ("C", "D"), ("D", "L")]
+        for edge in camino1:
+            self.play(digraph.edges[edge].animate.set_color(RED))
+            self.wait(0.5)
+
+        for vertex in ["A", "B", "C", "D", "L"]:
+            self.play(digraph[vertex].animate.set_color(YELLOW))
+            self.wait(0.3)
+        self.wait(1)
+
+
+        camino2 = [("A", "F"), ("F", "H"), ("H", "I"), ("I", "J"), ("J", "K"), ("K", "L")]
+        for edge in camino2:
+            self.play(digraph.edges[edge].animate.set_color(BLUE))
+            self.wait(0.5)
+
+        for vertex in ["A", "F", "H", "I", "J", "K", "L"]:
+            self.play(digraph[vertex].animate.set_color(RED))
+            self.wait(0.3)
+        self.wait(1)
+
+        camino3 = [("A", "B"), ("B", "H"), ("H", "I"), ("I", "J"), ("J", "K"), ("K", "L")]
+        for edge in camino3:
+            self.play(digraph.edges[edge].animate.set_color(YELLOW))
+            self.wait(0.5)
+
+        for vertex in ["A", "B", "H", "I", "J", "K", "L"]:
+            self.play(digraph[vertex].animate.set_color(GREEN))
+            self.wait(0.3)
+        self.wait(1)
+
+        camino4 = [("A", "F"), ("F", "G"), ("G", "H"), ("H", "I"), ("I", "J"), ("J", "K"), ("K", "L")]
+        for edge in camino4:
+            self.play(digraph.edges[edge].animate.set_color(PURPLE))
+            self.wait(0.5)
+
+        for vertex in ["A", "F", "G", "H", "I", "J", "K", "L"]:
+            self.play(digraph[vertex].animate.set_color(GRAY))
+            self.wait(0.3)
+        self.wait(1)
