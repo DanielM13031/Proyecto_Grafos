@@ -2,7 +2,7 @@ from manim import *
 
 class Grafo(Scene):
     def construct(self):
-        Texto1 = Text("Aplcacion de grafos a Redes")
+        Texto1 = Text("Aplicación de grafos a Redes")
         self.play(Write(Texto1))
         self.wait(1)
         letras = Texto1.submobjects[:12]
@@ -180,4 +180,35 @@ class Grafo(Scene):
         for vertex in ["A", "F", "G", "H", "I", "J", "K", "L"]:
             self.play(digraph[vertex].animate.set_color(GRAY))
             self.wait(0.3)
+        self.wait(2)
+
+        self.clear()
         self.wait(1)
+
+        code = Code(
+            code ="""def Ford_Fulkerson(G, s, t):
+                        Gf = grafo_residual(G)  
+                        flujo_t = 0
+                        caminos_usados = [] 
+                        while True:
+                            camino = BFS(Gf, s, t)  
+                            if not camino:  
+                                break
+                            capacidad_residual = float('Inf')
+                            for i in range(len(camino) - 1):
+                                u, v = camino[i], camino[i + 1]
+                                capacidad_residual = min(capacidad_residual, Gf[u][v]['capacity'])
+                            caminos_usados.append((camino, capacidad_residual))
+                            flujo_t += capacidad_residual
+                            for i in range(len(camino) - 1):
+                                u, v = camino[i], camino[i + 1]
+                                Gf[u][v]['capacity'] -= capacidad_residual
+                                Gf[v][u]['capacity'] += capacidad_residual
+                        return flujo_t, caminos_usados""",
+                        tab_width = 4,
+                        language = "Python",
+                        font_size = 10,
+                        style = "dracula"
+                    ) 
+        self.play(Write(code))
+        self.wait(2)
