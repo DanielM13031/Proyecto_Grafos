@@ -64,7 +64,7 @@ Asignar_flujo(G, server_traffic, paths)
 # Recalcular latencias dinámicas con el nuevo tráfico
 Latencia_dinamica(G, k)
 
-# Flujo máximo (opcional)
+# Flujo máximo 
 flow_value = Ford_Fulkerson(G, 'A', 'L')
 print("Flujo máximo:", flow_value)
 
